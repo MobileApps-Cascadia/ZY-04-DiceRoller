@@ -10,7 +10,7 @@
     <item android:id="@+id/action_stop"
         android:title="@string/action_stop"
         android:icon="@drawable/stop"
-        android:visible="false"
+
         app:showAsAction="ifRoom"/>
 
     <item android:id="@+id/action_roll"
