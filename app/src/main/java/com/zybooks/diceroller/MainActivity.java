@@ -11,7 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+
+    implements RollLengthDialogFragment.OnRollLengthSelectedListener{
 
     public static final int MAX_DICE = 3;
 
@@ -20,9 +22,18 @@ public class MainActivity extends AppCompatActivity {
     private ImageView[] mDiceImageViews;
     private CountDownTimer mTimer;
     private Menu mMenu;
+    private long mTimerLength = 2000;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+
+
+        public void onRollLengthClick ( int which){
+        // Convert to milliseconds
+        mTimerLength = 1000 * (which + 1);
+    }
+
+
+        @Override
+        protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -87,6 +98,11 @@ public class MainActivity extends AppCompatActivity {
             rollDice();
             return true;
         }
+        else if (item.getItemId() == R.id.action_roll_length) {
+            RollLengthDialogFragment dialog = new RollLengthDialogFragment();
+            dialog.show(getSupportFragmentManager(), "rollLengthDialog");
+            return true;
+            }
 
         return super.onOptionsItemSelected(item);
     }
@@ -96,6 +112,8 @@ public class MainActivity extends AppCompatActivity {
         if (mTimer != null) {
             mTimer.cancel();
         }
+//        mTimer = new CountDownTimer(mTimerLength, 100) {
+
 
         mTimer = new CountDownTimer(2000, 100) {
             public void onTick(long millisUntilFinished) {
