@@ -225,17 +225,17 @@ public class MainActivity extends AppCompatActivity
             float x = e.getX();
             float y = e.getY();
             //dice 1 : x 330 - 740 y 390 - 808
-            if (e.getX() > 330 && e.getX() < 740 && e.getY() > 390 && e.getY() < 808) {
+            if (findViewById(R.id.dice1) == mDiceImageViews[0]) {
                 mDice[0].addOne();
                 showDice();
             }
             //dice 2 : x 332 - 754 y 1039 - 1461
-            if (e.getX() > 330 && e.getX() < 740 && e.getY() > 1039 && e.getY() < 1461) {
+            if (findViewById(R.id.dice2) == mDiceImageViews[1])  {
                 mDice[1].addOne();
                 showDice();
             }
             //dice 3 : x 332 - 754 y 1673 - 2095
-            if (e.getX() > 330 && e.getX() < 740 && e.getY() > 1673 && e.getY() < 2095) {
+            if (findViewById(R.id.dice3) == mDiceImageViews[2]) {
                 mDice[2].addOne();
                 showDice();
             }
