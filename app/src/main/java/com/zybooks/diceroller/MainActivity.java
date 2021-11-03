@@ -47,85 +47,36 @@ public class MainActivity extends AppCompatActivity implements RollLengthDialogF
         showDice();
 
         //vertical scroll for 1st die
-        mDiceImageViews[0].setOnTouchListener((v, event) -> {
-            int action = event.getAction();
-            switch (action) {
-                case MotionEvent.ACTION_DOWN:
-                    mInitY = (int) event.getY();
-                    return true;
-                case MotionEvent.ACTION_MOVE:
-                    int y = (int) event.getY();
+        for (int i=0; i< mDiceImageViews.length; i++) {
+            mDiceImageViews[i].setTag(i);
+            final int mi = i;
+            mDiceImageViews[i].setOnTouchListener((v, event) -> {
+                int action = event.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        mInitY = (int) event.getY();
+                        return true;
+                    case MotionEvent.ACTION_MOVE:
+                        int y = (int) event.getY();
 
-                    // See if movement is at least 20 pixels
-                    if (Math.abs(y - mInitY) >= 20) {
-                        if (y > mInitY) {
-                            mDice[0].addOne();
-                        } else {
-                            mDice[0].subtractOne();
+                        // See if movement is at least 20 pixels
+                        if (Math.abs(y - mInitY) >= 20) {
+                            if (y > mInitY) {
+                                mDice[mi].addOne();
+                            } else {
+                                mDice[mi].subtractOne();
+                            }
+                            showDice();
+                            mInitY = y;
                         }
-                        showDice();
-                        mInitY = y;
-                    }
 
-                    return true;
-            }
-            return false;
-        });
-
-        //veritcal scroll for 2nd die
-        mDiceImageViews[1].setOnTouchListener((v, event) -> {
-            int action = event.getAction();
-            switch (action) {
-                case MotionEvent.ACTION_DOWN:
-                    mInitY = (int) event.getY();
-                    return true;
-                case MotionEvent.ACTION_MOVE:
-                    int y = (int) event.getY();
-
-                    // See if movement is at least 20 pixels
-                    if (Math.abs(y - mInitY) >= 20) {
-                        if (y > mInitY) {
-                            mDice[1].addOne();
-                        }
-                        else {
-                            mDice[1].subtractOne();
-                        }
-                        showDice();
-                        mInitY = y;
-                    }
-
-                    return true;
-            }
-            return false;
-        });
-
-        //vertical scroll for 3rd die
-        mDiceImageViews[2].setOnTouchListener((v, event) -> {
-            int action = event.getAction();
-            switch (action) {
-                case MotionEvent.ACTION_DOWN:
-                    mInitY = (int) event.getY();
-                    return true;
-                case MotionEvent.ACTION_MOVE:
-                    int y = (int) event.getY();
-
-                    // See if movement is at least 20 pixels
-                    if (Math.abs(y - mInitY) >= 20) {
-                        if (y > mInitY) {
-                            mDice[2].addOne();
-                        }
-                        else {
-                            mDice[2].subtractOne();
-                        }
-                        showDice();
-                        mInitY = y;
-                    }
-
-                    return true;
-            }
-            return false;
-        });
+                        return true;
+                }
+                return false;
+            });
+        }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
