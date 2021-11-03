@@ -66,43 +66,43 @@ public class MainActivity extends AppCompatActivity
 
         // Moving finger left or right changes dice number
         //adding vertical scroll left, right or up, down to change dice values.
-//        mDiceImageViews[0].setOnTouchListener((v, event) -> {
-//            int action = event.getAction();
-//            switch (action) {
-//                case MotionEvent.ACTION_DOWN:
-//                    mInitX = (int) event.getX();
-//                    mInitY = (int) event.getY();
-//                    return true;
-//                case MotionEvent.ACTION_MOVE:
-//                    int x = (int) event.getX();
-//                    int y = (int) event.getY();
-//
-//                    // See if movement is at least 20 pixels
-//                    if (Math.abs(x - mInitX) >= 20) {
-//                        if (x > mInitX) {
-//                            mDice[0].addOne();
-//                        }
-//                        else {
-//                            mDice[0].subtractOne();
-//                        }
-//                        showDice();
-//                        mInitX = x;
-//                    }
-//                    if (Math.abs(y - mInitY) >= 20) {
-//                        if (y > mInitY) {
-//                            mDice[0].addOne();
-//                        }
-//                        else {
-//                            mDice[0].subtractOne();
-//                        }
-//                        showDice();
-//                        mInitY = y;
-//                    }
-//
-//                    return true;
-//            }
-//            return false;
-//        });
+       mDiceImageViews[0].setOnTouchListener((v, event) -> {
+           int action = event.getAction();
+            switch (action) {
+               case MotionEvent.ACTION_DOWN:
+                    mInitX = (int) event.getX();
+                    mInitY = (int) event.getY();
+                    return true;
+                case MotionEvent.ACTION_MOVE:
+                    int x = (int) event.getX();
+                    int y = (int) event.getY();
+
+                    // See if movement is at least 20 pixels
+                    if (Math.abs(x - mInitX) >= 20) {
+                        if (x > mInitX) {
+                            mDice[0].addOne();
+                        }
+                        else {
+                            mDice[0].subtractOne();
+                        }
+                        showDice();
+                        mInitX = x;
+                    }
+                    if (Math.abs(y - mInitY) >= 20) {
+                        if (y > mInitY) {
+                            mDice[0].addOne();
+                        }
+                        else {
+                            mDice[0].subtractOne();
+                        }
+                        showDice();
+                        mInitY = y;
+                    }
+
+                    return true;
+            }
+            return false;
+        });
 
 
 
